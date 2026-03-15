@@ -1,0 +1,554 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;        /* Remove margens padrão */
+  padding: 0;       /* Remove espaçamentos internos padrão */
+  box-sizing: border-box; 
+}
+
+/* VARIÁVEIS DE CORES (PALETA MODERNA DEEP NAVY) */
+:root {
+  --bg-color: #0a192f;        /* Azul marinho profundo (Fundo) */
+  --bg-light: #112240;        /* Azul um pouco mais claro (Cards) */
+  --text-primary: #ccd6f6;    /* Branco quase cinza (Títulos) */
+  --text-secondary: #8892b0;  /* Cinza azulado (Textos) */
+  --accent-color: #64ffda;    /* Verde Água Neon (Destaque Principal) */
+  --font-main: 'Poppins', sans-serif;
+}
+
+/* CONFIGURAÇÕES GERAIS DO SITE */
+body {
+  background-color: var(--bg-color); 
+  color: var(--text-secondary); 
+  font-family: var(--font-main);
+  line-height: 1.6;
+}
+
+
+/* CONFIGURAÇÃO PADRÃO DAS SEÇÕES */
+
+section {
+  padding: 100px 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* HEADER / NAVEGAÇÃO */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 5%;
+  background: rgba(10, 25, 47, 0.85); /* Fundo translúcido */
+  backdrop-filter: blur(10px);        /* Efeito de vidro */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Link ativo no menu (será controlado via JS) */
+.nav-links a.active {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 5px;
+}
+
+/* TÍTULOS PRINCIPAIS (H2) */
+h2 {
+  margin-bottom: 40px; 
+  color: var(--text-primary);
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Parte vermelha dentro do título */
+h2 span {
+  color: var(--accent-color);
+}
+
+/* LINHA VERMELHA DECORATIVA */
+
+.line {
+  display: none; /* Removendo a linha antiga para um estilo mais clean */
+}
+
+/* HERO (Primeira seção do site) */
+
+/*
+display: flex coloca os elementos lado a lado
+(texto de um lado e imagem do outro)
+*/
+.hero {
+  display: flex;
+
+  justify-content: space-between;
+  /* Empurra texto para esquerda e imagem para direita */
+
+  align-items: center;
+  /* Centraliza verticalmente */
+  min-height: 100vh; /* Ocupa a tela toda */
+  padding-top: 80px; /* Compensa o menu fixo */
+}
+
+/* Limita largura do bloco de texto */
+.hero-text {
+  max-width: 600px;
+}
+
+/* Texto pequeno vermelho no topo */
+.tag {
+  display: inline-block;
+  color: var(--accent-color);
+  font-size: 13px;
+  font-family: monospace;
+  padding: 5px 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 50px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
+  animation: pulse 2s infinite; /* Animação de pulsar */
+}
+
+/* Animação do status */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+}
+
+/* Texto "Olá, meu nome é" */
+.intro {
+  margin: 15px 0 5px;
+  color: var(--accent-color);
+  font-size: 18px;
+}
+
+/* Seu nome principal */
+h1 {
+  font-size: 70px; /* Tamanho grande */
+  font-weight: 700; /* Negrito forte */
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+/* Parte vermelha do nome */
+h1 span {
+  color: var(--text-secondary); /* Nome secundário em cinza para contraste elegante */
+}
+
+/* Parágrafo descritivo */
+.descricao {
+  line-height: 1.6; /* Espaçamento entre linhas */
+  color: var(--text-secondary);
+  font-size: 18px;
+  max-width: 500px;
+}
+
+/* Palavras destacadas */
+.highlight {
+  color: var(--accent-color);
+  font-weight: normal;
+}
+
+
+/* ===================================================== */
+/* BOTÕES PADRÃO DO SITE */
+/* ===================================================== */
+
+/*
+Container que segura os botões
+display flex deixa eles lado a lado
+gap cria espaço entre eles
+*/
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+/* Botão vermelho preenchido */
+.btn-primary {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  padding: 14px 28px;
+  color: var(--accent-color);
+  text-decoration: none; /* Remove sublinhado */
+  border-radius: 4px;
+  transition: 0.3s; /* Animação suave */
+  font-family: monospace;
+  font-size: 14px;
+}
+
+/* Efeito ao passar o mouse */
+.btn-primary:hover {
+  background: rgba(100, 255, 218, 0.1);
+}
+
+/* Botão apenas com borda */
+.btn-outline {
+  padding: 14px 28px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover do botão outline */
+.btn-outline:hover {
+  color: var(--accent-color);
+}
+
+
+/* ===================================================== */
+/* IMAGEM DA HERO */
+/* ===================================================== */
+
+/*
+width controla o tamanho da imagem
+border-radius deixa redonda
+border cria borda vermelha
+*/
+.hero-image img {
+  width: 350px;
+  border-radius: 10px; /* Quadrado arredondado é mais moderno que redondo */
+  border: none;
+  max-width: 100%; /* Garante que a imagem não estoure a tela no mobile */
+  height: auto;
+  box-shadow: 20px 20px 0px rgba(100, 255, 218, 0.2); /* Sombra sólida estilo tech */
+  transition: 0.3s;
+  filter: grayscale(100%); /* Foto em preto e branco */
+  animation: float 6s ease-in-out infinite; /* Efeito flutuante */
+}
+
+/* Animação de flutuar */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Quando passar o mouse, pausa a flutuação e dá zoom */
+.hero-image img:hover {
+  filter: grayscale(0%); /* Foto colorida ao passar mouse */
+  transform: scale(1.02); 
+  box-shadow: 25px 25px 0px rgba(100, 255, 218, 0.4);
+  animation-play-state: paused;
+}
+
+.login-image img {
+  width: 250px;
+  max-width: 100%; /* Segurança para mobile */
+  height: auto;
+  border-radius: 7px;
+  
+}
+
+
+
+
+/*
+display flex coloca texto e caixas lado a lado
+gap controla distância entre eles
+*/
+.sobre-container {
+  display: flex;
+  gap: 60px;
+}
+
+/* Parte textual ocupa mais espaço */
+.sobre-texto {
+  flex: 2; /* Ocupa 2 partes do espaço */
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Destaques em Ciano dentro do texto */
+.sobre-texto span {
+  color: var(--accent-color);
+  font-weight: normal;
+}
+
+/* Coluna lateral */
+.sobre-info {
+  flex: 1; /* Ocupa menos espaço */
+  display: flex;
+  flex-direction: column; /* Caixas uma abaixo da outra */
+  gap: 20px;
+}
+
+/* Caixinhas laterais */
+.info-box {
+  background: var(--bg-light);
+  padding: 20px;
+  border-radius: 4px;
+  border-left: none;
+  transition: 0.3s;
+}
+
+.info-box h3 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+  /* PROJETOS */
+.projetos {
+  background: inherit;
+}
+
+/* Cards lado a lado */
+.projetos-container {
+  display: grid; /* Mudança para Grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo automático */
+  gap: 20px;
+}
+
+/* Card individual */
+.card {
+  background: var(--bg-light);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+}
+
+.project-title {
+  color: var(--text-primary);
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* Efeito ao passar mouse */
+.card:hover {
+  transform: translateY(-10px); /* Sobe levemente */
+}
+
+/* Tecnologias usadas no projeto */
+.tech span {
+  font-family: monospace;
+  margin-right: 15px;
+  display: inline-block;
+  font-size: 12px;
+  color: var(--accent-color);
+  background: none;
+  padding: 0;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 15px;
+}
+
+
+.link-icon {
+  color: var(--text-primary);
+  margin-top: 20px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.link-icon:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* SERVIÇOS */
+.servicos-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.servicos-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+
+.butns {
+  margin-top: 35px;
+}
+
+
+/* ===================================================== */
+/* CONTATO GRID */
+/* ===================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.big-btn {
+  text-align: center;
+  border: 1px solid var(--text-secondary);
+  padding: 20px;
+  border-radius: 4px;
+}
+.big-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(100, 255, 218, 0.05);
+}
+
+/* ===================================================== */
+/* FOOTER */
+/* ===================================================== */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: monospace;
+}
+
+
+/* ===================================================== */
+/* RESPONSIVIDADE */
+/* ===================================================== */
+/*
+ Ajustes para Tablets e Celulares
+*/
+@media (max-width: 992px) {
+  /* Reduz padding das seções */
+  section {
+    padding: 60px 5%;
+  }
+
+  /* Títulos menores */
+  h1 {
+    font-size: 50px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding-top: 120px; /* Mais espaço para o menu */
+  }
+
+  .hero-text {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  /* Centraliza botões na hero */
+  .buttons {
+    justify-content: center;
+  }
+
+  /* Sobre Mim vira coluna única */
+  .sobre-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Ajuste no Grid de Projetos para telas médias */
+  .projetos-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ajuste do Menu Superior */
+  header {
+    padding: 15px 5%;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(10, 25, 47, 0.95); /* Menos transparência para leitura */
+  }
+
+  .nav-links a {
+    margin: 0 10px; /* Reduz espaço entre links */
+    font-size: 13px;
+  }
+
+  /* Texto Hero ainda menor */
+  h1 {
+    font-size: 40px;
+  }
+
+  .intro {
+    font-size: 16px;
+  }
+
+  .descricao {
+    font-size: 16px;
+  }
+
+  /* Imagem Hero menor */
+  .hero-image img {
+    width: 240px;
+    box-shadow: 10px 10px 0px rgba(100, 255, 218, 0.2);
+  }
+  
+  /* Botões empilhados se a tela for muito pequena (ex: iPhone SE) */
+  @media (max-width: 400px) {
+    .buttons {
+      flex-direction: column;
+    }
+    .btn-primary, .btn-outline {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+/* ROLAGEM SUAVE */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================================== */
+/* CLASSES PARA JAVASCRIPT (SCROLL REVEAL) */
+/* ===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px); /* Começa 30px abaixo */
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Atraso para elementos em sequência (ex: cards) */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
